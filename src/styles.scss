@@ -1,0 +1,222 @@
+/* You can add global styles to this file, and also import other style files */
+
+$type1-light: 'ubuntu-light',
+sans-serif;
+$type1-regular: 'ubuntu-regular',
+sans-serif;
+$type1-medium: 'ubuntu-medium',
+sans-serif;
+$type1-bold: 'ubuntu-bold',
+sans-serif;
+$navbar-height: 70px;
+$navbar-bg: #fff;
+$navbar-menu-color: #9c9fa6;
+$navbar-font-size: .875rem;
+$navbar-icon-font-size: 1.25rem;
+$sidebar-width-lg: 260px;
+$sidebar-width-mini: 185px;
+$sidebar-width-icon: 70px;
+$sidebar-bg: white;
+$sidebar-menu-color: #3e4b5b;
+$sidebar-submenu-color: #888;
+$sidebar-menu-active-bg: white;
+$sidebar-menu-active-color: theme-color(primary);
+$sidebar-menu-hover-bg: darken($sidebar-bg, 1%);
+$sidebar-menu-hover-color: darken($sidebar-menu-color, 10%);
+$sidebar-submenu-hover-color: darken($sidebar-submenu-color, 20%);
+$sidebar-menu-icon-color: black;
+$sidebar-menu-arrow-color: #9e9da0;
+$sidebar-menu-border-color: #f2edf3;
+$default-font-size: .875rem; // 14px as base font size
+$sidebar-menu-font-size: $default-font-size;
+$sidebar-menu-padding-y: 1.125rem;
+$sidebar-menu-padding-x: 2.25rem;
+$sidebar-submenu-font-size: .8125rem;
+$sidebar-submenu-item-padding: .75rem 2rem .75rem 2rem;
+$sidebar-icon-font-size: 1.125rem;
+$sidebar-arrow-font-size: .625rem;
+$sidebar-profile-bg: transparent;
+$sidebar-profile-padding: .75rem 1.625rem .75rem 1.188rem;
+$sidebar-icon-only-menu-padding: .5rem 1.625rem .5rem 1.188rem;
+$sidebar-icon-only-submenu-padding: 0 0 0 1.5rem;
+$icon-only-collapse-width: 190px;
+$icon-only-menu-bg-light: $sidebar-bg;
+$content-bg: #F7F8FA;
+$footer-bg: $content-bg;
+$footer-color: color(dark);
+$border-color: #ebedf2;
+///////// BUTTONS ////////
+$button-fixed-width: auto;
+$btn-padding-y: .875rem;
+$btn-padding-x: 2.5rem;
+$btn-line-height: 1;
+$btn-padding-y-xs: .25rem;
+$btn-padding-x-xs: .75rem;
+$btn-padding-y-sm: .50rem;
+$btn-padding-x-sm: .81rem;
+$btn-padding-y-lg: 1rem;
+$btn-padding-x-lg: 3rem;
+$btn-font-size: .875rem;
+$btn-font-size-xs: .625rem;
+$btn-font-size-sm: .675rem;
+$btn-font-size-lg: .875rem;
+$btn-border-radius: .1875rem;
+$btn-border-radius-xs: .1875rem;
+$btn-border-radius-sm: .1875rem;
+$btn-border-radius-lg: .1875rem;
+///////// BUTTONS ////////
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+
+/* === Icon fonts === */
+
+@import "~@mdi/font/scss/materialdesignicons";
+
+/* Miscellanoeous */
+
+body,
+html {
+    overflow-x: hidden;
+    padding-right: 0 !important; // resets padding right added by Bootstrap modal
+}
+
+body {
+    background: $content-bg;
+}
+
+*:-moz-full-screen,
+*:-webkit-full-screen,
+*:fullscreen *:-ms-fullscreen {
+    overflow: auto;
+}
+
+.page-body-wrapper {
+    min-height: calc(100vh - #{$navbar-height});
+    padding-top: $navbar-height;
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+    &.full-page-wrapper {
+        width: 100%;
+        min-height: 100vh;
+        padding-top: 0;
+    }
+}
+
+.main-panel {
+    width: calc(100% - #{$sidebar-width-lg});
+    min-height: calc(100vh - #{$navbar-height});
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 991px) {
+        margin-left: 0;
+        width: 100%;
+    }
+    &.main-panel-only {
+        $sidebar-width-lg: 100px;
+        transition: none;
+    }
+}
+
+.content-wrapper {
+    background: $content-bg;
+    padding: 2.05rem 2.05rem;
+    width: 100%;
+}
+
+.container-scroller {
+    overflow: hidden;
+}
+
+pre {
+    background: color(gray-lighter);
+    padding: 15px;
+    font-size: 14px;
+}
+
+code {
+    padding: 5px;
+    color: theme-color(danger);
+    font-family: $type1-light;
+    font-size: $default-font-size;
+    border-radius: 4px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin: 0 0 1.5rem 0;
+    .breadcrumb {
+        border: 0;
+        margin-bottom: 0;
+    }
+}
+
+.page-title {
+    color: $black;
+    font-size: 1.125rem;
+    margin-bottom: 0;
+    .page-title-icon {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        text-align: center;
+        box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+        i {
+            font-size: .9375rem;
+            line-height: 36px;
+        }
+    }
+}
+
+.purchase-popup {
+    width: 100%;
+    z-index: 9999;
+    background: #fff;
+    padding: 15px;
+    display: flex;
+    margin-bottom: 1rem;
+    @include media-breakpoint-down(md) {
+        padding: 15px 20px;
+        display: block;
+    }
+    .btn {
+        margin-right: 20px;
+        font-weight: 500;
+        &.purchase-button {
+            color: #fff;
+            border: none;
+            line-height: 1;
+            vertical-align: middle;
+            min-height: auto;
+        }
+    }
+    p {
+        margin-bottom: auto;
+        margin-top: auto;
+        color: #1c273c;
+        font-weight: 400;
+        vertical-align: middle;
+        line-height: 1;
+        @include media-breakpoint-down(md) {
+            margin-bottom: 10px;
+        }
+    }
+    i {
+        vertical-align: middle;
+        line-height: 1;
+        margin: auto 0;
+        color: darken(#e4e4e4, 20%);
+    }
+}
+
+.removeProbanner {
+    #proBanner {
+        display: none;
+    }
+}

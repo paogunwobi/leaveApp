@@ -1,0 +1,366 @@
+.modalBd {
+    max-height: 400px;
+}
+
+.redded {
+    color: red;
+    font-size: 0.75rem;
+}
+
+.greend {
+    color: green;
+    font-size: 0.75rem;
+}
+
+.textC {
+    text-align: center;
+    justify-content: center;
+}
+
+.zindex {
+    z-index: 2000;
+}
+
+.contMe {
+    right: 0;
+    margin-right: 30%;
+    margin-left: 30%;
+}
+
+.mnHg {
+    min-height: 130px;
+    min-width: 130px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.active-style {
+    border-radius: 18px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: green;
+    max-width: 80px;
+}
+
+.pointr {
+    // color: blue!important;
+    cursor: pointer;
+    // margin-left: auto;
+}
+
+.scrollable {
+    overflow-y: scroll;
+}
+
+.borderdbold {
+    border: 2px solid#33b5e5!important;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.borderdbold2 {
+    border: 2px solid #00c851!important;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.btn.btn-sm.change {
+    font-size: .64rem;
+    padding: .5rem .6rem;
+}
+
+.btn.btn-sm {
+    font-weight: 700;
+}
+
+.table-editable {
+    // min-width: 1125px;
+    overflow-x: scroll;
+}
+
+.roundnow {
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background-color: #33b5e5!important;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.roundnow2 {
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background-color: #00c851!important;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.borden600 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.mmm {
+    h5 {
+        font-size: 12px !important;
+        font-weight: 300;
+    }
+}
+
+.fill2 {
+    min-height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.fill2 img {
+    flex-shrink: 0;
+    min-height: 320px;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.colorme {
+    background-color: #ed017f;
+    color: white;
+}
+
+.maxwidth {
+    max-width: 400px;
+    min-width: 300px;
+    border-radius: 18px;
+    border: 1px solid #bdbdbd;
+}
+
+.fontmust {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg-smoke {
+    background-color: rgb(250, 244, 244);
+    font-weight: 300 !important;
+}
+
+table thead tr {
+    height: 60px;
+}
+
+table tbody tr {
+    height: 50px;
+}
+
+table tbody tr:last-child {
+    border: 0;
+}
+
+table td,
+table th {
+    text-align: left;
+}
+
+table td.l,
+table th.l {
+    text-align: right;
+}
+
+table td.c,
+table th.c {
+    text-align: center;
+}
+
+table td.r,
+table th.r {
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e6f2ff;
+}
+
+tbody tr {
+    color: #808080;
+    line-height: 3;
+    font-weight: unset;
+}
+
+tbody tr:hover {
+    color: #555555;
+    background-color: #e6f2ff;
+}
+
+.column1 {
+    width: 40px !important;
+}
+
+.blueC {
+    color: #1341da;
+}
+
+.colorBlue {
+    color: #3561f1;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.usrtails {
+    h6 {
+        font-size: 14px;
+        color: #1341da;
+    }
+    p {
+        font-size: 12px;
+    }
+}
+
+.modal-dialog {
+    max-width: 700px !important;
+}
+
+.minhgt {
+    min-height: 320px;
+}
+
+.bgCold {
+    background-color: white!important;
+}
+
+.container-p {
+    width: 96.3%;
+    height: 270px;
+    padding: 2rem;
+    text-align: center;
+    border: dashed 2px #979797;
+    position: relative;
+    margin: 0 auto;
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    label {
+        color: white;
+        width: 150px;
+        height: 34px;
+        border-radius: 21.5px;
+        background-color: #ed017f;
+        padding: 6px 16px;
+    }
+    h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #38424c;
+    }
+    h5 {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #38424c;
+    }
+}
+
+.fileover {
+    animation: shake 1s;
+    animation-iteration-count: infinite;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.margin-r {
+    margin-right: 4px;
+}
+
+.roundme {
+    border-radius: 10em;
+}
+
+.files-list {
+    // width: 92%;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    position: relative;
+    .single-file {
+        display: flex;
+        padding: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        border: dashed 1px #979797;
+        margin-bottom: 1rem;
+        .delete {
+            display: flex;
+            margin-left: 1rem;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        display: flex;
+        flex-grow: 1;
+        .name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #353f4a;
+            margin: 0;
+        }
+        .size {
+            font-size: 12px;
+            font-weight: 500;
+            color: #a4a4a4;
+            margin: 0;
+            margin-bottom: 0.25rem;
+        }
+        .info {
+            width: 100%
+        }
+    }
+}
+
+
+/* Shake animation */
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}

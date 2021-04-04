@@ -1,0 +1,78 @@
+<section>
+    <div class="maxW">
+
+        <!-- Default form login -->
+        <div class="text-center mt-3 mb-5 border bgMe border-light p-5">
+            <!-- [formGroup]="loginForm" -->
+            <img src="/assets/images/logo.png" class="logOr" alt="">
+            <p class="h6 mb-5">Leave Management App</p>
+            
+            <p class="h5 mb-4">LOGIN</p>
+            
+            <form name="loginForm" novalidate>
+    
+                <div >
+                    <input type="email" formControlName="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <!-- <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error> -->
+                </div>
+
+                <div>
+                    <div class="input-group mt-2 mb-4">
+                      <!-- Change input type to be dynamic -->
+                      <input
+                        [type]="fieldTextType ? 'text' : 'password'"
+                        class="form-control"
+                        formControlName="password"
+                        id="defaultLoginFormPassword" placeholder="Password"
+                      />
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i
+                                    class="fa"
+                                    [ngClass]="{
+                                    'fa-eye-slash': !fieldTextType,
+                                    'fa-eye': fieldTextType
+                                    }"
+                                    (click)="toggleFieldTextType()"
+                                ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        Password is required
+                    </mat-error> -->
+                </div>
+
+    
+                <!-- <div>
+                    <input type="password" formControlName="password" type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                    
+                </div> -->
+    
+                <div class="remember-forgot-password mt-2">
+                    <a class="forgot-password" [routerLink]="'/forgot-password'">
+                        Forgot Password?
+                    </a>
+                </div>
+    
+                <button type="button" mdbBtn color="info" class="bgBtn btn mt-3" mdbWavesEffect aria-label="LOGIN"
+                        [disabled]="loginForm.invalid">
+                    LOGIN
+                </button>
+    
+            </form>
+           
+        </div>
+        <!-- Default form login -->
+    </div>
+
+</section>

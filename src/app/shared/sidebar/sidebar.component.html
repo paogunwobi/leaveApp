@@ -1,0 +1,40 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav pt-4">
+        <li class="nav-item pt-2" [ngClass]="{ 'active': dashboard.isActive }">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive #dashboard="routerLinkActive">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">DashBoard</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item" [ngClass]="{ 'active': mydashboard.isActive }">
+            <a class="nav-link" routerLink="/mydashboard" routerLinkActive #mydashboard="routerLinkActive">
+                <i class="fa fa-history menu-icon" aria-hidden="true"></i>
+                <span class="menu-title">My DashBoard</span>
+            </a>
+        </li>
+
+        <li class="nav-item" [ngClass]="{ 'active': manageleaves.isActive }">
+            <a class="nav-link" routerLink="/manageleaves" routerLinkActive #manageleaves="routerLinkActive">
+                <i class="fa fa-th-list menu-icon" aria-hidden="true"></i>
+                <span class="menu-title">Leave Applications</span>
+            </a>
+        </li>
+
+        <li class="nav-item" [ngClass]="{ 'active': managestaffs.isActive }">
+            <a class="nav-link" routerLink="/managestaffs" routerLinkActive #managestaffs="routerLinkActive">
+                <i class="fa fa-users menu-icon" aria-hidden="true"></i>
+                <span class="menu-title">Manage Staffs</span>
+            </a>
+        </li>
+
+        <li class="nav-item" [ngClass]="{ 'active': myprofile.isActive }">
+            <a class="nav-link" routerLink="/myprofile" routerLinkActive #myprofile="routerLinkActive">
+                <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                <span class="menu-title">My Profile</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>

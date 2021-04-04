@@ -1,0 +1,116 @@
+<div class="row text-center mb-4">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 grid-margin stretch-card mb-2" style="min-height: 143px; max-height: 143px; font-size:14px;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" style="margin-bottom: 0px;font-size:18px;">Active</h5>
+                <h6 class="card-title mb-3" style="margin-top: 0px;font-size:12px;">(Pending, Approved, Ongoing)</h6>
+                <h5 class="card-title" style="font-size:21.5px;">ActiveTotal</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 grid-margin stretch-card mb-2" style="min-height: 143px; max-height: 143px; font-size:14px;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-4" style="font-size:18px;">Completed</h5>
+                <h5 class="card-title" style="font-size:23px;">CompletedTotal</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 grid-margin stretch-card mb-2" style="min-height: 143px; max-height: 143px; font-size:14px;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-4" style="font-size:18px;">Rejected</h5>
+                <h5 class="card-title" style="font-size:23px;">RejectedTotal</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 grid-margin stretch-card mb-2" style="min-height: 143px; max-height: 143px; font-size:14px;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-4" style="font-size:18px;">Total Staffs</h5>
+                <h5 class="card-title" style="font-size:23px;">StaffsTotal</h5>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <h4 class="card-title">Leave Summary</h4>
+        <span class="mb-2 rownew form-inline">
+        <h5 class="mr-3" style="font-size: 13px;font-weight: 500;"> Showing
+            <select  style="background-color: #f7f7f7; color:#1875F0;border:none;" [(ngModel)]="showing" (change)="changeData($event.target.value)" class="ml-1 sel browser-default custom-select">
+              <option [value]="showingValue" *ngFor="let showingValue of showingList; let i = index" [selected]="showing === showingValue">{{ showingValue }}</option>
+            </select>
+
+          <span class="ml-2">out of</span> <span class="ml-2 mr-2">{{ resultLength }}</span>Applications</h5>
+        <div class="mr-5 ml-4 pb-2 search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" action="#">
+                <div class="input-group" style="background: transparent; border-bottom: solid 1px #787878!important;">
+                    <div class="input-group-prepend bg-transparent">
+                        <i class="input-group-text border-0 mdi mdi-magnify" style="background: transparent;"></i>
+                    </div>
+                    <input type="text" class="form-control bg-transparent border-0" style="font-size:12px; min-width:300px;max-width:320px;background: transparent;" placeholder="Search...">
+                </div>
+            </form>
+        </div>
+        <h5 class="mr-2" style="font-size: 13px;font-weight: 500;">Show</h5>
+        <h5 class="rownew"><span style="max-width: 50px;">
+          <select class="ml-1 browser-default custom-select sel">
+            <option selected>All</option>
+            <option value="1">Completed</option>
+            <option value="2">Pending</option>
+          </select>
+        </span> </h5>
+        </span>
+
+        <div class="card bg-white" style="min-height: 110px;">
+            <table mdbTable hover="true">
+                <thead class="" style="font-weight: 400;" >
+                  <tr>
+                    <!-- <th scope="col">S/N</th> -->
+                    <th scope="col">Staff Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Leave Start Date</th>
+                    <th scope="col">Leave End Date</th>
+                    <th scope="col">Resumption Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Leave Type</th>
+                    <th scope="col">Approver</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr mdbTableCol *ngFor="let el of leaves; let i = index">
+                    <!-- <td scope="row">{{i + 1}}</td> -->
+                    <td>{{el.staff.name}}</td>
+                    <td>{{el.staff.email}}</td>
+                    <td>{{el.leaveStartDate}}</td>
+                    <td>{{el.leaveEndDate}}</td>
+                    <td>{{el.resumptionDate}}</td>
+                    <td>{{el.status}}</td>
+                    <td>{{el.leaveType}}</td>
+                    <td>{{el.approver}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            <span class="text-center" style="margin: auto;"  *ngIf="leaves.length === 0">
+                NO DATA FOUND
+            </span>
+        </div>
+
+        <div class="rownew mt-3" style="font-size: 13px;font-weight: 500;">
+            <div class="col-9 mt-2"> Showing {{initial + 1 }} to {{ limit }} of {{ resultLength }} entries </div>
+            <div class="col-3 float-right" style="float:right !important;right:0!important;">
+                <div class="float-right pagination">
+                    <a *ngIf="pg !== 1" (click)="prevPg()">Previous</a>
+                    <a class="active">{{pg}}</a>
+                    <a *ngIf="limit !== resultLength" (click)="nextPg()">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+.maxW {
+    margin: 0 auto;
+    // margin-top: 60px;
+    // left: auto;
+    // right: auto;
+    width: 400px !important;
+    max-width: 100%;
+    height: 90%;
+}
+
+.bgMe {
+    background-color: #f0f0f0;
+}
+
+.bgBtn {
+    color: #fff;
+    font-size: medium;
+    font-weight: 500;
+    width: 100% !important;
+    background-color: #ee3224;
+    cursor: pointer !important;
+}
+
+.logOr {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 12px;
+    // margin: 0 auto;
+}
+
+#login {
+    width: 100%;
+
+    #login-form-wrapper {
+        width: 400px;
+        min-width: 400px;
+        max-width: 400px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        #login-form {
+            padding: 128px 48px 48px 48px;
+
+            .logo {
+                width: 128px;
+                margin: 32px auto;
+            }
+
+            .title {
+                font-size: 21px;
+            }
+
+            .description {
+                padding-top: 8px;
+            }
+
+            form {
+                width: 100%;
+                padding-top: 32px;
+
+
+                .remember-forgot-password {
+                    font-size: 13px;
+                    margin-top: 8px;
+
+                    .forgot-password {
+                        font-size: 13px;
+                        font-weight: 600;
+                        margin-bottom: 16px
+                    }
+                }
+
+                .submit-button {
+                    width: 100%;
+                    margin: 16px auto;
+                    display: block;
+
+                }
+            }
+
+            .separator {
+                font-size: 15px;
+                font-weight: 600;
+                margin: 24px auto;
+                position: relative;
+                overflow: hidden;
+                width: 100px;
+                text-align: center;
+
+                .text {
+                    display: inline-flex;
+                    position: relative;
+                    padding: 0 8px;
+                    z-index: 9999;
+
+                    &:before,
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 30px;
+                        position: absolute;
+                        top: 10px;
+                        border-top: 1px solid;
+                    }
+
+                    &:before {
+                        right: 100%;
+                    }
+
+                    &:after {
+                        left: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

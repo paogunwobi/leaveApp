@@ -1,0 +1,153 @@
+<div>
+    <div id="table" class="row m-4 table-editable">
+        <!--Table-->
+        <table mdbTable class="table mb-4 table-bordered table-responsive-md table-striped text-center">
+            <!--Table head-->
+            <thead class="bg-smoke">
+                <tr class="text-center">
+                    <th class="column1 text-center font-16px">SN.</th>
+                    <th class="th-lg text-uppercase text-center font-16px">First Name</th>
+                    <th class="th-lg text-uppercase text-center font-16px">Last Name</th>
+                    <th class="th-lg text-uppercase text-center font-16px">Email</th>
+                    <th class="th-lg text-uppercase text-center font-16px">Phone Number</th>
+                    <th class="th-lg text-uppercase text-center font-16px">Role</th>
+                    <th class="th-lg text-uppercase text-center font-16px">Status</th>
+                    <th class="th-lg text-uppercase text-center font-16px" style="min-width: 200px;">Actions</th>
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody *ngIf="!loading">
+                <tr *ngFor="let Staff of StaffArray; let i = index">
+                    <td scope="row" class="font-16px text-center">{{ i + 1 + addValue }}</td>
+                    <td class="font-16px text-center">{{ Staff.firstName }}</td>
+                    <td class="font-16px text-center">{{ Staff.lastName }}</td>
+                    <td class="font-16px text-center">{{ Staff.email }}</td>
+                    <td class="font-16px text-center">{{ Staff.phoneNumber }}</td>
+                    <td class="font-16px text-center">{{ Staff.role }}</td>
+                    <td class="font-16px text-center">{{ Staff.status }}</td>
+                    <td class="font-16px text-center align-content-center paddingl">
+                        <button mdbBtn color="warning" size="sm" mdbWavesEffect type="button" class="change m-0 mr-2" (click)="prevModal(i)"><mdb-icon fas icon="edit" color="white"></mdb-icon></button>
+                        <button mdbBtn color="danger" size="sm" mdbWavesEffect type="button" class="change m-0" (click)="deletingStaff(i)"><mdb-icon fas icon="trash" color="white"></mdb-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+            <!--Table body-->
+            <!--Table foot-->
+            <tfoot *ngIf="!loading" [hidden]="(StaffArray.length < pageLimit && currentpge <= 1) || (hidNxt && currentpge <= 1) || (StaffArray.length > pageLimit)" class="grey lighten-5 w-100">
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <span class="form-inline justify-content-center">
+                            <span class="pointr" (click)="previousPage()" [hidden]="currentpge <= 1" class="mr-5" style="color:rgb(238, 87, 87);cursor: pointer;">&lt; prev.</span> Page <span class="form-control active-style ml-1">
+                                {{ currentpge }}     
+                            </span>
+                        <span class="pointr" (click)="nextPage()" [hidden]="StaffArray.length < pageLimit || hidNxt" class="ml-5" style="color:blue;cursor: pointer;">next &gt;
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </tfoot>
+            <!--Table foot-->
+        </table>
+        <!--Table-->
+    </div>
+
+    <!-- <div *ngIf="loading" class="row m-4 contMe">
+        <div class="spinner-border text-primary mnHg" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div> -->
+
+    <div *ngIf="StaffArray.length === 0 && !loading" class="text-center">
+        <p> {{ noStaff }} </p>
+    </div>
+
+</div>
+
+
+
+<div mdbModal #previewModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mdbModal" aria-hidden="true">
+    <div class="modal-dialog modal-fluid modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 mmm" id="myModalLabel">{{ title }}</h5>
+            </div>
+            <div class="modal-body modalBd scrollable row">
+                <div class="col-12">
+                    <div class="p-5">
+                        <div class="row mb-4">
+                            <div class="col-6 col-sm-6">
+                                <label for="firstName" class="text-left">First Name</label>
+                                <input type="text" class="form-control p-4" placeholder="First Name" [(ngModel)]="selectedStaff.firstName" required />
+                            </div>
+                            <div class="col-6 col-sm-6">
+                                <label for="firstName" class="text-left">Last Name</label>
+                                <input type="text" class="form-control p-4" placeholder="Last Name" [(ngModel)]="selectedStaff.lastName">
+                            </div>
+                        </div>
+
+                        <div *ngIf="!editingStaff">
+                            <label for="E-mail" class="text-left">E-mail</label>
+                            <input type="email" id="defaultRegisterFormEmail" class="form-control p-4 mb-4" placeholder="E-mail" [(ngModel)]="selectedStaff.email">
+                        </div>
+
+                        <div *ngIf="!editingStaff">
+                            <label for="password" class="text-left"><span *ngIf="unmatchPass" id="passwordMatch3" class="redded">*</span> Password</label>
+                            <input type="password" id="defaultRegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Password" [(ngModel)]="selectedStaff.password">
+                        </div>
+
+                        <div *ngIf="!editingStaff">
+                            <label for="password" class="text-left"><span *ngIf="unmatchPass" id="passwordMatch1" class="redded">*</span>
+                            Confirm Password <span *ngIf="unmatchPass" id="passwordMatch2" class="redded">Password did not match</span><span *ngIf="passMatch" id="passwordMatched" class="greend">Password Match</span></label>
+                            <input type="password" id="RegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" [(ngModel)]="selectedStaff.confirmPassword">
+
+                        </div>
+
+                        <div>
+                            <label for="phoneNumber" class="text-left">Phone Number</label>
+                            <input type="text" id="defaultRegisterPhoneNumber" class="col-12 form-control p-4 mb-4" placeholder="Phone Number" aria-describedby="defaultRegisterFormPhoneNumber" [(ngModel)]="selectedStaff.phoneNumber">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-4">
+                                    <label>Role</label>
+                                    <select class="browser-default custom-select adjst" (change)="changerole($event.target.value)" [(ngModel)]="role" placeholder="">
+                                        <option [value]="rle" *ngFor="let rle of RoleList; let i = index" [selected]="selectedStaff.role === rle">{{ rle }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-4">
+                                    <label>Status</label>
+                                    <select class="browser-default custom-select adjst" (change)="changestatus($event.target.value)" [(ngModel)]="status" placeholder="">
+                                        <option [value]="state" *ngFor="let state of StatusList; let i = index" [selected]="selectedStaff.status === state">{{ state }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" size="sm" mdbBtn color="danger" class="waves-light change" aria-label="Close" (click)="closeEdit()" mdbWavesEffect>Close</button>
+                <button type="button" size="sm" mdbBtn color="warning" class="relative waves-light" mdbWavesEffect (click)="editStaff()">{{ modalButton }}<span [hidden]="!createLoading" class="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #deleteModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mdbModal" aria-hidden="true">
+    <div class="modal-dialog modal-fluid modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body modalBd textC scrollable row">
+                <p>Are you Sure you want to Delete Staff: <span class="blueC">{{ selectedStaffDel.email }}</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" size="sm" mdbBtn color="indigo" class="waves-light change" aria-label="Close" (click)="deleteModal.hide()" mdbWavesEffect>NO</button>
+                <button type="button" size="sm" mdbBtn color="danger" class="relative waves-light change" mdbWavesEffect (click)="deleteStaff()">YES</button>
+            </div>
+        </div>
+    </div>
+</div>
