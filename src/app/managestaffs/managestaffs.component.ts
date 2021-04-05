@@ -86,12 +86,13 @@ export class ManagestaffsComponent implements OnInit {
   }
 
   getLoginStaff(): void {
-    const Staff: any = this.authGuardservice.getStaffFromStorage();
-    this.loggedInStaff =  Staff[0];
-    if (this.loggedInStaff && this.loggedInStaff.role !== 'ADMIN') {
-      this.IsAdmin = false;
-      this.router.navigate(['/']);
-    }
+    // const Staff: any = this.authGuardservice.getStaffFromStorage();
+    // const Staff = new Staff;
+    // this.loggedInStaff =  Staff[0];
+    // if (this.loggedInStaff && this.loggedInStaff.role !== 'ADMIN') {
+    //   this.IsAdmin = false;
+    //   this.router.navigate(['/']);
+    // }
   }
 
   getStaffArray(): void {

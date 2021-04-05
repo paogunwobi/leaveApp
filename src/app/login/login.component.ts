@@ -41,13 +41,13 @@ export class LoginComponent implements OnInit {
   }
 
   getLoginStaff(): void {
-    const staff: any = this.authGuardService.getStaffFromStorage();
-    if (staff) {
-      this.selectedstaff =  staff[0];
-      if (this.selectedstaff) {
-        this.router.navigate(['/']);
-      }
-    }
+    // const staff: any = this.authGuardService.getStaffFromStorage();
+    // if (staff) {
+    //   this.selectedstaff =  staff[0];
+    //   if (this.selectedstaff) {
+    //     this.router.navigate(['/']);
+    //   }
+    // }
   }
 
   login(): void {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.loginObj = { email: this.email, password: this.password };
     this.staffService.login(this.loginObj.email.trim(), this.loginObj.password).subscribe(
       (data) => {
-            this.authGuardService.updateLoginStaff(data);
+            // this.authGuardService.updateLoginStaff(data);
             window.location.href = '/';
       }, (err) => {
         console.log(err);
