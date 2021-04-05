@@ -1,5 +1,5 @@
 <div>
-    <div id="table" class="row m-4 table-editable">
+    <div id="table" class="row table-editable">
         <!--Table-->
         <table mdbTable class="table mb-4 table-bordered table-responsive-md table-striped text-center">
             <!--Table head-->
@@ -18,7 +18,7 @@
             <!--Table head-->
             <!--Table body-->
             <tbody *ngIf="!loading">
-                <tr *ngFor="let Staff of StaffArray; let i = index">
+                <tr *ngFor="let Staff of staffArray; let i = index">
                     <td scope="row" class="font-16px text-center">{{ i + 1 + addValue }}</td>
                     <td class="font-16px text-center">{{ Staff.firstName }}</td>
                     <td class="font-16px text-center">{{ Staff.lastName }}</td>
@@ -34,14 +34,14 @@
             </tbody>
             <!--Table body-->
             <!--Table foot-->
-            <tfoot *ngIf="!loading" [hidden]="(StaffArray.length < pageLimit && currentpge <= 1) || (hidNxt && currentpge <= 1) || (StaffArray.length > pageLimit)" class="grey lighten-5 w-100">
+            <tfoot *ngIf="!loading" [hidden]="(staffArray.length < pageLimit && currentpge <= 1) || (hidNxt && currentpge <= 1) || (staffArray.length > pageLimit)" class="grey lighten-5 w-100">
                 <tr>
                     <td colspan="9" class="text-center">
                         <span class="form-inline justify-content-center">
                             <span class="pointr" (click)="previousPage()" [hidden]="currentpge <= 1" class="mr-5" style="color:rgb(238, 87, 87);cursor: pointer;">&lt; prev.</span> Page <span class="form-control active-style ml-1">
                                 {{ currentpge }}     
                             </span>
-                        <span class="pointr" (click)="nextPage()" [hidden]="StaffArray.length < pageLimit || hidNxt" class="ml-5" style="color:blue;cursor: pointer;">next &gt;
+                        <span class="pointr" (click)="nextPage()" [hidden]="staffArray.length < pageLimit || hidNxt" class="ml-5" style="color:blue;cursor: pointer;">next &gt;
                             </span>
                         </span>
                     </td>
@@ -52,13 +52,7 @@
         <!--Table-->
     </div>
 
-    <!-- <div *ngIf="loading" class="row m-4 contMe">
-        <div class="spinner-border text-primary mnHg" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
-
-    <div *ngIf="StaffArray.length === 0 && !loading" class="text-center">
+    <div *ngIf="staffArray.length === 0 && !loading" class="text-center">
         <p> {{ noStaff }} </p>
     </div>
 
@@ -78,34 +72,34 @@
                         <div class="row mb-4">
                             <div class="col-6 col-sm-6">
                                 <label for="firstName" class="text-left">First Name</label>
-                                <input type="text" class="form-control p-4" placeholder="First Name" [(ngModel)]="selectedStaff.firstName" required />
+                                <input type="text" class="form-control p-4" placeholder="First Name" required />
                             </div>
                             <div class="col-6 col-sm-6">
                                 <label for="firstName" class="text-left">Last Name</label>
-                                <input type="text" class="form-control p-4" placeholder="Last Name" [(ngModel)]="selectedStaff.lastName">
+                                <input type="text" class="form-control p-4" placeholder="Last Name" >
                             </div>
                         </div>
 
                         <div *ngIf="!editingStaff">
                             <label for="E-mail" class="text-left">E-mail</label>
-                            <input type="email" id="defaultRegisterFormEmail" class="form-control p-4 mb-4" placeholder="E-mail" [(ngModel)]="selectedStaff.email">
+                            <input type="email" id="defaultRegisterFormEmail" class="form-control p-4 mb-4" placeholder="E-mail">
                         </div>
 
                         <div *ngIf="!editingStaff">
                             <label for="password" class="text-left"><span *ngIf="unmatchPass" id="passwordMatch3" class="redded">*</span> Password</label>
-                            <input type="password" id="defaultRegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Password" [(ngModel)]="selectedStaff.password">
+                            <input type="password" id="defaultRegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Password">
                         </div>
 
                         <div *ngIf="!editingStaff">
                             <label for="password" class="text-left"><span *ngIf="unmatchPass" id="passwordMatch1" class="redded">*</span>
                             Confirm Password <span *ngIf="unmatchPass" id="passwordMatch2" class="redded">Password did not match</span><span *ngIf="passMatch" id="passwordMatched" class="greend">Password Match</span></label>
-                            <input type="password" id="RegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" [(ngModel)]="selectedStaff.confirmPassword">
+                            <input type="password" id="RegisterFormPassword" class="col-12 form-control p-4 mb-4" (input)="passCheck()" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
 
                         </div>
 
                         <div>
                             <label for="phoneNumber" class="text-left">Phone Number</label>
-                            <input type="text" id="defaultRegisterPhoneNumber" class="col-12 form-control p-4 mb-4" placeholder="Phone Number" aria-describedby="defaultRegisterFormPhoneNumber" [(ngModel)]="selectedStaff.phoneNumber">
+                            <input type="text" id="defaultRegisterPhoneNumber" class="col-12 form-control p-4 mb-4" placeholder="Phone Number" aria-describedby="defaultRegisterFormPhoneNumber">
                         </div>
 
                         <div class="row">
@@ -142,7 +136,7 @@
     <div class="modal-dialog modal-fluid modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body modalBd textC scrollable row">
-                <p>Are you Sure you want to Delete Staff: <span class="blueC">{{ selectedStaffDel.email }}</span></p>
+                <p>Are you Sure you want to Delete this Staff</p>
             </div>
             <div class="modal-footer">
                 <button type="button" size="sm" mdbBtn color="indigo" class="waves-light change" aria-label="Close" (click)="deleteModal.hide()" mdbWavesEffect>NO</button>
