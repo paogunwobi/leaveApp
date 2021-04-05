@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class BaseService {
-  baseUrl = 'https://jsonplaceholder.typicode.com/';
+  baseUrl = 'https://leave-app-be.herokuapp.com/';
 
   controllerName = '';
 
