@@ -1,4 +1,4 @@
-import { Staff } from './../../models/Staff';
+import { Staff } from 'src/app/models/Staff';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
