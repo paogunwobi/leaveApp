@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import * as SecureLS from 'secure-ls';
-import { Staff } from 'src/app/models/staff';
+// import { Staff } from 'src/app/models/staff';
 
 @Injectable({
   providedIn: 'root',
